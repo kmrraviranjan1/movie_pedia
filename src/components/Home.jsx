@@ -3,6 +3,7 @@ import { useHomeFetch } from "../hooks/useHomeFetch";
 import HeroImage from "./HeroImage/HeroImage";
 import Grid from "./Grid/Grid";
 import Thumb from "./Thumb/Thumb";
+import Spinner from './Spinner/Spinner'
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
 
 import NoImage from "../images/no_image.jpg";
@@ -33,6 +34,7 @@ const Home = () => {
           />
         ))}
       </Grid>
+      <Spinner/>
     </>
   );
 };
