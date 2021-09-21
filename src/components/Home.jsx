@@ -1,6 +1,8 @@
 import React from "react";
 import { useHomeFetch } from "../hooks/useHomeFetch";
 import HeroImage from "./HeroImage/HeroImage";
+import Grid from "./Grid/Grid";
+
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
 
 import NoImage from "../images/no_image.jpg";
@@ -18,6 +20,9 @@ const Home = () => {
         />
         : null
     }
+    <Grid header="Popular Movies">
+       { state.results.map(movie=>(<div key={movie.id} >{movie.title}</div> ))}
+    </Grid>
   </>;
 };
 
