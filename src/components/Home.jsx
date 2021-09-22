@@ -3,14 +3,14 @@ import { useHomeFetch } from "../hooks/useHomeFetch";
 import HeroImage from "./HeroImage/HeroImage";
 import Grid from "./Grid/Grid";
 import Thumb from "./Thumb/Thumb";
-import Spinner from './Spinner/Spinner';
-import SearchBar from './SearchBar/SearchBar'
+import Spinner from "./Spinner/Spinner";
+import SearchBar from "./SearchBar/SearchBar";
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
 
 import NoImage from "../images/no_image.jpg";
 
 const Home = () => {
-  const { state, loading, error,searchTerm, setSearchTerm} = useHomeFetch();
+  const { state, loading, error, searchTerm, setSearchTerm } = useHomeFetch();
   console.log("movies:", state);
   return (
     <>
@@ -22,7 +22,7 @@ const Home = () => {
         />
       ) : null}
       <SearchBar setSearchTerm={setSearchTerm} />
-      <Grid header={searchTerm?'Search Results' : "Popular Movies"}>
+      <Grid header={searchTerm ? "Search Results" : "Popular Movies"}>
         {state.results.map((movie) => (
           <Thumb
             key={movie.id}
@@ -36,7 +36,7 @@ const Home = () => {
           />
         ))}
       </Grid>
-      <Spinner/>
+      <Spinner />
     </>
   );
 };
