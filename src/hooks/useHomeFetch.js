@@ -30,10 +30,12 @@ export const useHomeFetch = () => {
         }
         setLoading(false)
     }
+    // inital search and searchterm
     useEffect(()=>{
-        fetchMovies(1)
-    },[])
+        setState(initState)
+        fetchMovies(1,searchTerm)
+    },[searchTerm])
 
-    return {state,loading,error,setSearchTerm}
+    return {state,loading,error,searchTerm,setSearchTerm}
 }
 
