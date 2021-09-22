@@ -5,13 +5,17 @@ import Grid from "./Grid/Grid";
 import Thumb from "./Thumb/Thumb";
 import Spinner from "./Spinner/Spinner";
 import SearchBar from "./SearchBar/SearchBar";
+import Button from "./Button/Button";
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
 
 import NoImage from "../images/no_image.jpg";
 
 const Home = () => {
-  const { state, loading, error, searchTerm, setSearchTerm } = useHomeFetch();
+  const { state, loading, error, searchTerm, setSearchTerm ,setIsLoadingMore} = useHomeFetch();
   console.log("movies:", state);
+  if(error){
+    return <div>Something went wrong</div>
+  }
   return (
     <>
       {!searchTerm && state.results[0] ? (
@@ -36,7 +40,13 @@ const Home = () => {
           />
         ))}
       </Grid>
-      <Spinner />
+      {loading && <Spinner /> }
+      
+      {
+        state.page<state.total_pages && !loading && (
+          <Button text="Load More" callback={()=>setIsLoadingMore(true)} />
+        )
+      }
     </>
   );
 };
